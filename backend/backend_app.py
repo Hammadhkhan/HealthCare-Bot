@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app import auth, chat
-from app.middleware import limiter, LoggingMiddleware, _rate_limit_exceeded_handler
-from app.logging_config import setup_logging
+import auth, chat
+from middlewares import limiter, LoggingMiddleware, _rate_limit_exceeded_handler
+from logging_config import setup_logging
 
 # Setup rotating logs
 logger = setup_logging()
