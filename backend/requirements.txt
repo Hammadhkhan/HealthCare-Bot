@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+python-multipart
+passlib[bcrypt]
+pyjwt
+pydantic
+pytesseract
+Pillow
+pymupdf
+boto3
+pyclamd
