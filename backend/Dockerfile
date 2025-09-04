@@ -10,14 +10,15 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Update ClamAV DB
+# Update ClamAV DB (don’t fail build if freshclam can’t update)
 RUN freshclam || true
 
 EXPOSE 8000
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# ✅ Run FastAPI app defined in backend_app.py
+CMD ["uvicorn", "backend_app:app", "--host", "0.0.0.0", "--port", "8000"]
